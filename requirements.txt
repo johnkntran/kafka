@@ -1,0 +1,2 @@
+kafka-python==2.1.5
+ipython==9.2.0
