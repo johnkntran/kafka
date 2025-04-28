@@ -1,5 +1,5 @@
 # Kafka: Python Example
-This shows a quick setup of how to produce and consume messages with Kafka using Python.
+This shows a quick setup of how to produce and consume messages with Kafka using Python. And to see an example of using RabbitMQ, visit the [rabbitmq branch](https://github.com/johnkntran/kafka/tree/rabbitmq).
 
 ## Setup
 
