@@ -1,5 +1,5 @@
-# Kafka: Python Example
-This shows a quick setup of how to produce and consume messages with Kafka using Python.
+# Dramatiq: Python Example
+This shows a quick setup of how to produce and consume messages with RabbitMQ using Python.
 
 ## Setup
 
