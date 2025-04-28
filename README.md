@@ -1,5 +1,5 @@
 # RabbitMQ: Python Example
-This shows a quick setup of how to produce and consume messages with RabbitMQ using Python.
+This shows a quick setup of how to produce and consume messages with RabbitMQ using Python. And to see an example of using Kafka, visit the [kafka branch](https://github.com/johnkntran/kafka/tree/kafka).
 
 ## Setup
 1. Start the containers by running `docker-compose up --remove-orphans --build --abort-on-container-exit`.
