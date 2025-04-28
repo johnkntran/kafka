@@ -25,8 +25,8 @@ with pika.BlockingConnection(pika.ConnectionParameters(host=broker_url)) as conn
         channel.basic_publish(
             exchange=exchange,
             routing_key=routing_key,
-            properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent),
             body=msg,
+            properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent),
         )
         print(f" [x] Sent '{msg}'")
         time.sleep(1)
