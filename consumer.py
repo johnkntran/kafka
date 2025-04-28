@@ -10,20 +10,20 @@ def main():
     exchange = os.environ['EXCHANGE']
     queue = os.environ['QUEUE']
 
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=broker_url))
-    channel = connection.channel()
-    channel.exchange_declare(exchange=exchange, exchange_type='fanout')
-    channel.queue_declare(queue=queue, durable=True)
-    channel.queue_bind(exchange=exchange, queue=queue)
+    with pika.BlockingConnection(pika.ConnectionParameters(host=broker_url)) as connection:
+        channel = connection.channel()
+        channel.exchange_declare(exchange=exchange, exchange_type='fanout')
+        channel.queue_declare(queue=queue, durable=True)
+        channel.queue_bind(exchange=exchange, queue=queue)
 
-    print(' [*] Waiting for messages. To exit press CTRL+C')
+        print(' [*] Waiting for messages. To exit press CTRL+C')
 
-    def callback(ch, method, properties, body):
-        print(f" [x] Received {body}")
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+        def callback(ch, method, properties, body):
+            print(f" [x] Received {body}")
+            ch.basic_ack(delivery_tag=method.delivery_tag)
 
-    channel.basic_consume(queue=queue, auto_ack=False, on_message_callback=callback)
-    channel.start_consuming()
+        channel.basic_consume(queue=queue, auto_ack=False, on_message_callback=callback)
+        channel.start_consuming()
 
 
 try:

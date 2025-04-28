@@ -3,7 +3,7 @@ This shows a quick setup of how to produce and consume messages with RabbitMQ us
 
 ## Setup
 1. Start the containers by running `docker-compose up --remove-orphans --build --abort-on-container-exit`.
-2. You should see logs come in for the `producer`, then the `consumer` joins in mid-stream.
+2. You should see logs come in for the `producer`, then the `consumer` joins in midway through.
 <img src="images/rabbitmq.png">
 3. You can view RabbitMQ Admin dashboard at [http://127.0.0.1:8080/](http://127.0.0.1:8080/). Login credentials are `guest/guest`.
 <img src="images/rabbitmq-admin.png">
