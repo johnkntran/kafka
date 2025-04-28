@@ -1,11 +1,10 @@
-# Dramatiq: Python Example
+# RabbitMQ: Python Example
 This shows a quick setup of how to produce and consume messages with RabbitMQ using Python.
 
 ## Setup
-
 1. Start the containers by running `docker-compose up --remove-orphans --build --abort-on-container-exit`.
 2. You should see logs come in for the `producer`, then the `consumer` joins in mid-stream.
-<img src="images/logs.png">
-3. You can view Kafka Admin dashboard at [http://127.0.0.1:8080/](http://127.0.0.1:8080/).
-<img src="images/admin.png">
+<img src="images/rabbitmq.png">
+3. You can view RabbitMQ Admin dashboard at [http://127.0.0.1:8080/](http://127.0.0.1:8080/). Login credentials are `guest/guest`.
+<img src="images/rabbitmq-admin.png">
 4. Stop the containers by running `docker-compose down --remove-orphans`.
