@@ -1,5 +1,4 @@
 import pika
-import sys
 import os
 import time
 import string
@@ -9,23 +8,25 @@ import random
 broker_url = os.environ['BROKER_URL']
 exchange = os.environ['EXCHANGE']
 queue = os.environ['QUEUE']
+routing_key = os.environ['ROUTING_KEY']
 
 time.sleep(15)  # Wait for RabbitMQ to be ready
 
 with pika.BlockingConnection(pika.ConnectionParameters(host=broker_url)) as connection:
     channel = connection.channel()
-    channel.exchange_declare(exchange=exchange, exchange_type='fanout')
+    channel.exchange_declare(exchange=exchange, exchange_type='direct')
     channel.queue_declare(queue=queue, durable=True)
+    channel.queue_bind(exchange=exchange, queue=queue, routing_key=routing_key)
 
-    for i in range(30):
+    print(' [#] Getting ready to send messages')
+
+    while True:
         msg = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
         channel.basic_publish(
             exchange=exchange,
-            routing_key=queue,
+            routing_key=routing_key,
             properties=pika.BasicProperties(delivery_mode=pika.DeliveryMode.Persistent),
             body=msg,
         )
         print(f" [x] Sent '{msg}'")
         time.sleep(1)
-
-time.sleep(60)

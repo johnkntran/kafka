@@ -24,6 +24,7 @@ services:
       BROKER_URL: broker
       EXCHANGE: hello
       QUEUE: world
+      ROUTING_KEY: hey
     volumes:
       - .:/app
     working_dir: /app
@@ -41,6 +42,7 @@ services:
       BROKER_URL: broker
       EXCHANGE: hello
       QUEUE: world
+      ROUTING_KEY: hey
     volumes:
       - .:/app
     working_dir: /app
