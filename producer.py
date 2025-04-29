@@ -10,7 +10,7 @@ exchange = os.environ['EXCHANGE']
 queue = os.environ['QUEUE']
 routing_key = os.environ['ROUTING_KEY']
 
-time.sleep(15)  # Wait for RabbitMQ to be ready
+time.sleep(20)  # Wait for RabbitMQ to be ready
 
 with pika.BlockingConnection(pika.ConnectionParameters(host=broker_url)) as connection:
     channel = connection.channel()
