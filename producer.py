@@ -3,6 +3,7 @@ import os
 import time
 import string
 import random
+import contextlib
 
 
 broker_url = os.environ['KAFKA_BROKER_URL']
@@ -14,13 +15,11 @@ client = KafkaClient(bootstrap_servers=broker_url)
 added = client.add_topic(topic)
 print(f'* Added topic: {topic}')
 
-producer = KafkaProducer(bootstrap_servers=broker_url)
-
-try:
+with contextlib.closing(
+    KafkaProducer(bootstrap_servers=broker_url)
+) as producer:
     while True:
         msg = ''.join(random.choices(string.ascii_letters + string.digits, k=10)).encode('utf-8')
         sent = producer.send(topic, msg)
         print(f'- Sent message: {msg.decode("utf-8")}')
         time.sleep(1)
-finally:
-    producer.close()
