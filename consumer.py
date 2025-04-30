@@ -9,8 +9,6 @@ topic = os.environ['KAFKA_TOPIC']
 
 time.sleep(20)  # Consumer joins in mid-stream with producer
 
-
-
 with contextlib.closing(
     KafkaConsumer(topic, bootstrap_servers=broker_url)
 ) as consumer:
